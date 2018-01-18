@@ -19,7 +19,8 @@ class template
      */
     public function __construct($file)
     {
-        $this->file = $file;
+        $this->file = $file; // määrame html faili nime
+        $this->loadFile(); // laadime html faili sisu
     }
 
 
