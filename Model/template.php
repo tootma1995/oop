@@ -13,6 +13,16 @@ class template
     var $content = false;
     var $vars = array();
 
+    /**
+     * template constructor.
+     * @param string $file
+     */
+    public function __construct($file)
+    {
+        $this->file = $file;
+    }
+
+
     // meetodid
 
     // faili sisu lugemine
@@ -21,8 +31,8 @@ class template
         $this->content = fread($fp,filesize($f));
         fclose($fp);
     }*/
-    function readFile($f){
-        $this->content = file_get_contents($f);
+    function readFile($file){
+        $this->content = file_get_contents($file);
     }
     // htmli vaadete faili kontroll ja kasutamine
     function loadFile(){
@@ -32,28 +42,30 @@ class template
             exit;
         }
         // kui html vaade faili nimi antakse kujul: views/test.html
-        $f = $this->file; //abiasendus
-        if(file_exists($f) and is_file($f) and is_readable($f)){
-            $this->readFile($f);
+        $file = $this->file; //abiasendus
+        if(file_exists($file) and is_file($file) and is_readable($file)){
+            $this->readFile($file);
         }
         // kui html vaade faili nimi antakse kujul: test.html
-        $f = VIEWS_DIR.$this->file;
-        if(file_exists($f) and is_file($f) and is_readable($f)){
-            $this->readFile($f);
+        $file = VIEWS_DIR.$this->file;
+        if(file_exists($file) and is_file($file) and is_readable($file)){
+            $this->readFile($file);
         }
         // kui html vaade faili nimi antakse kujul: test
-        $f = VIEWS_DIR.$this->file.'.html';
-        if(file_exists($f) and is_file($f) and is_readable($f)){
-            $this->readFile($f);
+        $file = VIEWS_DIR.$this->file.'.html';
+        if(file_exists($file) and is_file($file) and is_readable($file)){
+            $this->readFile($file);
         }
         // kui html vaade faili nimi antakse kujul: alamkaust.test;
-        $f = VIEWS_DIR.str_replace('.','/',$this->file).'.html';
-        if(file_exists($f) and is_file($f) and is_readable($f)){
-            $this->readFile($f);
+        $file = VIEWS_DIR.str_replace('.','/',$this->file).'.html';
+        if(file_exists($file) and is_file($file) and is_readable($file)){
+            $this->readFile($file);
         }
 
         if($this->content === false){
             echo 'Ei suutnud lugeda '.$this->file.' sisu';
         }
     }
+
+
 }
