@@ -67,6 +67,10 @@ class template
             echo 'Ei suutnud lugeda '.$this->file.' sisu';
         }
     }
+    //$this->vars täiendamine väärtustega
+    function set($name,$value){
+        $this->vars[$name]=$value;
+    }
 
 
 }
