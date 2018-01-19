@@ -23,3 +23,5 @@ $mainTmpl->set('content','Lehe sisu');
 echo '<pre>';
 print_r($mainTmpl);
 echo '</pre>';
+
+echo $mainTmpl->parse();

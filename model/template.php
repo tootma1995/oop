@@ -72,5 +72,14 @@ class template
         $this->vars[$name]=$value;
     }
 
+    //malli elementide asendamine reaalväärtustega vastavalt elementide nimedele
+    function parse(){
+        $str = $this->content; // asendamata sisu
+        foreach ($this->vars as $name=>$value) {
+            $str = str_replace('{' . $name . '}', $value, $str);
+        }
+        return $str;
+    }
+
 
 }
