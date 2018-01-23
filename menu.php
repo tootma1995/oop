@@ -6,5 +6,18 @@
  * Time: 14:13
  */
 
+// loome menu ehitamiseks vajalikud objektid
+$menuTmpl = new template('menu.menu'); // menu mall
+$itemTmpl = new template('menu.item'); // menu elemendi mall
 
-$mainTmpl->set('menu','Lehe menu');
+// loome elemendi nimega esimene
+$itemTmpl->set('name','esimene');
+// lisame elemendi menusse
+$menuItem = $itemTmpl->parse();
+$menuTmpl->set('menu_items', $menuItem);
+
+// ehitame valmis
+$menu = $menuTmpl->parse();
+
+// lisame lehele
+$mainTmpl->set('menu', $menu);
