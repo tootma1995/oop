@@ -14,7 +14,15 @@ $itemTmpl = new template('menu.item'); // menu elemendi mall
 $itemTmpl->set('name','esimene');
 // lisame elemendi menusse
 $menuItem = $itemTmpl->parse();
-$menuTmpl->set('menu_items', $menuItem);
+$menuTmpl->add('menu_items', $menuItem);
+
+
+// loome elemendi nimega teine
+$itemTmpl->set('name','teine');
+// lisame elemendi menusse
+$menuItem = $itemTmpl->parse();
+$menuTmpl->add('menu_items', $menuItem);
+
 
 // ehitame valmis
 $menu = $menuTmpl->parse();
