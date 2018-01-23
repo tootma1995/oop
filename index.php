@@ -17,7 +17,8 @@ $mainTmpl->set('site_title','PV');
 $mainTmpl->set('user','Kasutaja');
 $mainTmpl->set('title','Pealkiri');
 $mainTmpl->set('lang_bar','Keeleriba');
-$mainTmpl->set('menu','Menüü');
+// failist menu
+require_once 'menu.php';
 $mainTmpl->set('content','Lehe sisu');
 
 echo '<pre>';
