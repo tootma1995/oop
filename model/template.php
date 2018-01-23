@@ -72,6 +72,14 @@ class template
         $this->vars[$name]=$value;
     }
 
+    function add($name,$value){
+        if(!isset($this->vars[$name])){
+            $this->set($name,$value);
+        } else {
+            $this->vars[$name] = $this->vars[$name].$value;
+        }
+    }
+
     //malli elementide asendamine reaalväärtustega vastavalt elementide nimedele
     function parse(){
         $str = $this->content; // asendamata sisu
