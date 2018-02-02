@@ -7,4 +7,4 @@
  */
 
 
-$mainTmpl->set('content', '1. lehe sisu');
+$mainTmpl->set('content', '<strong>1. lehe sisu</strong>');
