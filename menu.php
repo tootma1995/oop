@@ -16,7 +16,6 @@ $itemTmpl->set('name','esimene');
 $menuItem = $itemTmpl->parse();
 $menuTmpl->add('menu_items', $menuItem);
 
-
 // loome elemendi nimega teine
 $itemTmpl->set('name','teine');
 // lisame elemendi menusse
