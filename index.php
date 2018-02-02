@@ -36,6 +36,7 @@ echo '<pre>';
 print_r($http->vars);
 echo '</pre>';
 
+$db->query('SELECT NOW()');
 
 echo '<pre>';
 print_r($db);
