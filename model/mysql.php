@@ -14,7 +14,7 @@ class mysql
     var $pass = false;
     var $dbname = false;
 
-    public function __construct()
+    public function __construct($host,$user,$pass,$dbname)
     {
         $this->host = $host;
         $this->user = $user;
