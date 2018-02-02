@@ -23,7 +23,7 @@ class mysql
         $this->connect();
     }
 
-    function connect($host,$user,$pass,$dbname){
+    function connect(){
         $this->conn= mysqli_connect($this->host,$this->user,$this->pass,$this->dbname);
         if(!$this->conn){
             echo 'Probleem andmebaasi ühendusega <br />';

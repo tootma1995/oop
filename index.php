@@ -21,14 +21,22 @@ $mainTmpl->set('title','Pealkiri');
 $mainTmpl->set('lang_bar','Keeleriba');
 // failist menu
 require_once 'menu.php';
-$mainTmpl->set('content','Lehe sisu');
+
+//$mainTmpl->set('content','Lehe sisu');
 
 // echo '<pre>';
 // print_r($mainTmpl);
 // echo '</pre>';
 
+// echo $mainTmpl->parse();
+
 echo $mainTmpl->parse();
 
 echo '<pre>';
 print_r($http->vars);
+echo '</pre>';
+
+
+echo '<pre>';
+print_r($db);
 echo '</pre>';

@@ -28,18 +28,22 @@ $menuTmpl->add('menu_items', $menuItem); // nüüd olemas paar 'menu_items'=>'<l
 // loome veel üks menüü element nimega teine
 $itemTmpl->set('name', 'teine');
 // määrata menüüs väljastava elemendiga seotud link
-// http://anna.ikt.khk.ee/oop_vs17_2/index.php?control=esimene
+// http://nk.ikt.khk.ee/oop_vs17_2/index.php?control=esimene
 $link = $http->getLink(array('control'=>'teine'));
 $itemTmpl->set('link', $link);
 // lisame antud element menüüsse
 $menuItem = $itemTmpl->parse(); // string, mis sisaldab ühe nimekirja elemendi lingiga
 $menuTmpl->add('menu_items', $menuItem); // nüüd olemas paar 'menu_items'=>'<li>...</li>
+
+
+
 // ehitame valmis menüü
 $menu = $menuTmpl->parse();
+
 // lisame valmis menüü lehele
-$mainTmpl->set('menu', $menu);
+//$mainTmpl->set('menu', $menu);
 // ehitame valmis
-$menu = $menuTmpl->parse();
+//$menu = $menuTmpl->parse();
 
 // lisame lehele
 $mainTmpl->set('menu', $menu);
