@@ -11,6 +11,8 @@ require_once 'conf.php';
 
 $mainTmpl = new template('main');
 
+require_once 'control.php';
+
 // reaalväärtuste määramine
 $mainTmpl->set('site_lang','et');
 $mainTmpl->set('site_title','PV');
@@ -26,3 +28,7 @@ $mainTmpl->set('content','Lehe sisu');
 // echo '</pre>';
 
 echo $mainTmpl->parse();
+
+echo '<pre>';
+print_r($http->vars);
+echo '</pre>';
