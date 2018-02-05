@@ -36,8 +36,8 @@ echo '<pre>';
 print_r($http->vars);
 echo '</pre>';
 
-$db->query('SELECT NOW()');
+$kell = $db->getData('SELECT NOW()');
 
 echo '<pre>';
-print_r($db);
+print_r($kell);
 echo '</pre>';

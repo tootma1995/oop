@@ -42,7 +42,7 @@ class mysql
 
     // andmete lugemine päringust
 
-    function getdata($sql){
+    function getData($sql){
         $result = $this->query($sql); // saadame päringu andmebaasi
         $data = array(); // päringu andmete salvestamine
         while ($row = mysqli_fetch_assoc($result)){
@@ -50,7 +50,7 @@ class mysql
         }
         // kui probleem andmete lugemisega
         if (count($data) == 0){
-            return false
+            return false;
         }
         return $data; // või tagastame andmed
     }
