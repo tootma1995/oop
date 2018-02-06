@@ -15,46 +15,16 @@ $sql = 'SELECT content_id, content, title '.
     'FROM content WHERE parent_id='.fixdb(0).' '.
     'AND show_in_menu='.fixdb(1);
 $result = $db->getData($sql); // loeme andmed dbst
-echo '<pre>';
-print_r($result);
-echo '</pre>';
 
+// kui andmed on db-s olemas, ss loome menu nende põhjal
+if($result != false){
+    foreach ($result as $page) {
+        $itemTmpl->set('name',$page['title']);
+        $link = $http->getLink(array('page_id'=>$page['content_id']));
+        $itemTmpl->set('link',$link);
+        $menuTmpl->add('menu_items',$itemTmpl->parse());
+    }
+}
 
-// avalele element
-$itemTmpl->set('name', 'avaleht');
-$link = $http->getLink();
-$itemTmpl->set('link', $link);
-$menuTmpl->add('menu_items', $itemTmpl->parse());
-// avalehe element on valmis
-// loome üks menüü element nimega esimene
-// määrame menüüs väljastava elemendi nime
-$itemTmpl->set('name', 'esimene');
-// määrata menüüs väljastava elemendiga seotud link
-// http://anna.ikt.khk.ee/oop_vs17_2/index.php?control=esimene
-$link = $http->getLink(array('control'=>'esimene'));
-$itemTmpl->set('link', $link);
-// lisame antud element menüüsse
-$menuItem = $itemTmpl->parse(); // string, mis sisaldab ühe nimekirja elemendi lingiga
-$menuTmpl->add('menu_items', $menuItem); // nüüd olemas paar 'menu_items'=>'<li>...</li>
-// loome veel üks menüü element nimega teine
-$itemTmpl->set('name', 'teine');
-// määrata menüüs väljastava elemendiga seotud link
-// http://nk.ikt.khk.ee/oop_vs17_2/index.php?control=esimene
-$link = $http->getLink(array('control'=>'teine'));
-$itemTmpl->set('link', $link);
-// lisame antud element menüüsse
-$menuItem = $itemTmpl->parse(); // string, mis sisaldab ühe nimekirja elemendi lingiga
-$menuTmpl->add('menu_items', $menuItem); // nüüd olemas paar 'menu_items'=>'<li>...</li>
-
-
-
-// ehitame valmis menüü
-$menu = $menuTmpl->parse();
-
-// lisame valmis menüü lehele
-//$mainTmpl->set('menu', $menu);
-// ehitame valmis
-//$menu = $menuTmpl->parse();
-
-// lisame lehele
-$mainTmpl->set('menu', $menu);
+//paneme paika valmis menu
+$mainTmpl->set('menu',$menuTmpl->parse());
