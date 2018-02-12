@@ -13,13 +13,14 @@ class session
     var $http = false; // otseühendus $http objektiga
     var $db = false; // otseühendus $db objektiga
 
+    var $timeout = 1800; // sessioni pikkus - 30 min (sek-s)
+    var $anonymous = true; // kas lubatud anonuumne kasutamine
+
     /**
      * session constructor.
      * @param bool $http
      * @param bool $db
      */
-
-    var $timeout = 1800; // sessioni pikkus - 30 min (sek-s)
 
     public function __construct(&$http, &$db)
     {
