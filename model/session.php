@@ -62,4 +62,46 @@ class session
             $this->timeout;
         $this->db->query($sql);
     }
+
+    //sesssioni seisundi kontroll
+    function checkSession(){
+        $this->clearSession(); // eemaldan aegunud asjad
+        //kui sid pole ja anon lubatud avame uue sessioni
+        if($this->sid === false and $this->anonymous){
+            $this->createSession();
+        }
+        // kui sessioni id on kätte saadav
+        if($this->sid !== false){
+            $sql = 'SELECT * FROM session WHERE '.
+                'sid='.fixdb($this->sid);
+            $result = $this->db->getData($sql);
+            //kui db-st andmeid ei saanud
+            if($result == false){
+                //loome uue anon sessioni, kui lubatud
+                if($this->anonymous){
+                    $this->createSession();
+                } else {
+                    //koristame andmed
+                    $this->sid = false;
+                    //koristada veebist
+                    //... veel ei ole
+                }
+                // loon anonyymse kasutaja rolli ja user_id
+                define('ROLE_ID',0);
+                define('USER_ID',0);
+            } else {
+                //kasutame andmed dbst
+                $vars = unserialize($result[0]['svars']);
+                $this->vars = $vars;
+                $user_data = unserialize($result[0]['user_data']);
+                define('ROLE_ID',$user_data['role_id']);
+                define('USER_ID',$user_data['user_id']);
+                $this->user_data = $user_data;
+            }
+        } else {
+            // kui sessioni pole
+            define('ROLE_ID',0);
+            define('USER_ID',0);
+        }
+    }
 }
