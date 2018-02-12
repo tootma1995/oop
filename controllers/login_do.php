@@ -19,6 +19,8 @@ $result = $db->getData($sql);
 
 if($result != false){
     //logime, avame sessiooni
+    //suuname pealehele
+    $http->redirect();
 } else {
     //suuname tagasi
     $link = $http->getLink(array('control'=>'login'));
