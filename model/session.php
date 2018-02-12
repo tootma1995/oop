@@ -53,6 +53,12 @@ class session
         $this->sid=$sid;
         // paneme antud väärtuse ka veebi andmete sisse
         $this->http->set('sid',$sid);
+    }
 
+    function clearSession(){
+        $sql = 'DELETE FROM session WHERE '.
+            time().'- UNIX_TIMESTAMP(changed) > '.
+            $this->timeout;
+        $this->db->query($sql);
     }
 }
