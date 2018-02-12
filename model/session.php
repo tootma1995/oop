@@ -18,6 +18,9 @@ class session
      * @param bool $http
      * @param bool $db
      */
+
+    var $timeout = 1800; // sessioni pikkus - 30 min (sek-s)
+
     public function __construct(&$http, &$db)
     {
         $this->http = &$http;
