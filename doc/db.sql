@@ -70,3 +70,40 @@ ALTER TABLE `content`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `username` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `first_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `last_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT '0',
+  `role_id` tinyint(1) NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL,
+  `changed` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;COMMIT;

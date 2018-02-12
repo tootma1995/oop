@@ -26,5 +26,13 @@ if($result != false){
     }
 }
 
+//loome mitte sisse logitud kasutaja jaoks user_id
+define('USER_ID',0);
+//naitame talle logi sisse menuud
+$itemTmpl->set('name','logi sisse');
+$link = $http->getLink(array('control'=>'login'));
+$itemTmpl->set('link',$link);
+$menuTmpl->add('menu_items',$itemTmpl->parse());
+
 //paneme paika valmis menu
 $mainTmpl->set('menu',$menuTmpl->parse());
